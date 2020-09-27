@@ -1,0 +1,18 @@
+! You can add color schemes in the CMD color syntax.
+! For the color codes type "color /?" in the command prompt
+! First digit is background color, second digit is text color
+0F
+01
+02
+03
+04
+05
+06
+09
+0A
+0B
+0C
+0D
+0E
+F0
+DF
