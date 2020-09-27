@@ -1,10 +1,48 @@
-List:
+Config:
+    MaxScore: 15 # How many correct questions are required for the round to end. (Will end sooner if there are not enought questions to continue!)
+    Lifes: 5 # How many lifes do you start with?
+List: # List of enabled questions.
     - Math-1
     - Math-2
-Questions:
+    - Math-3
+    - Math-4
+    - TextAns-1
+    - TextAns-2
+    - TextAns-3
+    - TextAns-4
+    - TextAns-5
+    - TextAns-6
+Questions: # Questions
+    Example:
+        a: 'correct answer' # The expected (correct) answer goes here
+        q: Question # The question goes here!
     Math-1:
         a: '15'
         q: How many is 3*5?
     Math-2:
         a: '45'
         q: How many is 37 + 8?
+    Math-3:
+        a: '756'
+        q: How many is 378 * 2
+    Math-4:
+        a: '34581'
+        q: How many is 45000-10419
+    TextAns-1:
+        a: 'no'
+        q: Is a minecraft world infinite? (yes/no) <-- caps matters!
+    TextAns-2:
+        a: 'z'
+        q: What is the last letter of the english alphabet (by 2020) (Use lowercase)
+    TextAns-3:
+        a: '2015'
+        q: When was undertale released? (year)
+    TextAns-4:
+        a: 'Scriptian77'
+        q: Who made this application? (By github username)
+    TextAns-5:
+        a: 'red'
+        q: der si rewsna ehT
+    TextAns-6:
+        a: 'code'
+        q:  01010100 01101000 01100101 00100000 01100001 01101110 01110011 01110111 01100101 01110010 00100000 01101001 01110011 00100000 01100011 01101111 01100100 01100101

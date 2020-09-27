@@ -3,19 +3,11 @@ import time
 import yaml
 import os
 
-with open("./colors.txt", "r") as clrf:
-    colors = []
-    for i in clrf.readlines():
-        if not i.strip().startswith("!"):
-            colors.append(i.strip())
-        else:
-            pass
-
 class Game():
-    def __init__(self, qlist, questions):
+    def __init__(self, qlist, questions, slife, mnscore):
         QuestionsN = qlist # ["Math-1"]
         Questions = questions # {"Math-1": {"q": "How many is 3*5?", "a": "15"}}
-        Life = 5
+        Life = int(slife)
         Round = 1
         Score = 0
         WinScore = len(QuestionsN)
@@ -31,8 +23,12 @@ class Game():
                 QuestionsN.remove(question)
             else:
                 print("\n===== ( Incorrect ) =====")
-                Life -= 1
-            if Score >= WinScore:
+                if random.randint(0,10) > 5:
+                    print("> Luck is on your side, question removed. Mistake forgiven.")
+                    QuestionsN.remove(question)
+                else:
+                    Life -= 1
+            if len(QuestionsN) <= 0 and Life > 0 or Score >= mnscore:
                 print(f"\n===== ( Game Over ) =====\nLifes: {Life}\nScore: {Score}\nRound: {Round}\n >>> You Win <<<")
                 break
             elif Life <= 0:
@@ -40,9 +36,17 @@ class Game():
                 break
             Round += 1
 while 1:
+    os.system("cls")
+    with open("./colors.txt", "r") as clrf:
+        colors = []
+        for i in clrf.readlines():
+            if not i.strip().startswith("!"):
+                colors.append(i.strip())
+            else:
+                pass
     with open("./Questions.yaml", "r") as QFile:
         QSource = yaml.load(QFile, Loader=yaml.FullLoader)
     os.system(f"color {random.choice(colors)}")
     print("-----------------------------------------------\n HyScript7's Puzzle\n Made for a challange with Bloody_Devil\n-----------------------------------------------")
-    NewGame = Game(QSource["List"], QSource["Questions"])
+    NewGame = Game(QSource["List"], QSource["Questions"], QSource["Config"]["Lifes"], QSource["Config"]["MaxScore"])
     time.sleep(5)
